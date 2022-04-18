@@ -4,8 +4,9 @@ import { Table } from "react-bootstrap";
 const Blogs = () => {
   return (
     <div className="container">
+        
+      <div className="fs-5">
         <h1 className="mt-5">Question-1: Difference between Authentication and Authorization.</h1>
-      <div>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -43,6 +44,14 @@ const Blogs = () => {
           </tbody>
         </Table>
       </div>
+
+      <div className="mt-5">
+        <h2>Question-2: why we use firebase? What are the other options to implement authentication?</h2>
+        <p className="fs-4">Google Firebase is a Google-backed application development software that enables developers to develop iOS, Android and Web apps. Firebase provides tools for tracking analytics, reporting and fixing app crashes, creating marketing and product experiment.</p>
+        <p className="fs-4">The other options to implement authentication without firebase are Parse, Back4App, AWS Amplify, Kuzzle, Couchbase, NativeScript etc. </p>
+      </div>
+
+      
     </div>
   );
 };
