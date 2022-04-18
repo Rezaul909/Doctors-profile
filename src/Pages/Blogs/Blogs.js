@@ -44,14 +44,30 @@ const Blogs = () => {
           </tbody>
         </Table>
       </div>
+      <hr />
 
       <div className="mt-5">
         <h2>Question-2: why we use firebase? What are the other options to implement authentication?</h2>
         <p className="fs-4">Google Firebase is a Google-backed application development software that enables developers to develop iOS, Android and Web apps. Firebase provides tools for tracking analytics, reporting and fixing app crashes, creating marketing and product experiment.</p>
         <p className="fs-4">The other options to implement authentication without firebase are Parse, Back4App, AWS Amplify, Kuzzle, Couchbase, NativeScript etc. </p>
       </div>
+      <hr />
 
-      
+      <div className="mt-5">
+          <h2>What other services does firebase provide other than authentication</h2>
+          <p className="fs-5">
+            There are many services which Firebase provides:-
+            <ul className="w-25 m-auto my-3">
+                <li>Hosting</li>
+                <li>Cloud Storage</li>
+                <li>Google Analytics</li>
+                <li>Cloud Messaging</li>
+                <li>Dynamic Links</li>
+                <li>Remote Config</li>
+                <li>Cloud Functions</li>
+            </ul>
+          </p>
+      </div>
     </div>
   );
 };
