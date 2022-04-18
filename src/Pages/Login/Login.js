@@ -6,6 +6,7 @@ import {
   sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import app from "../../firebase.init";
 
@@ -58,6 +59,7 @@ const Login = () => {
           setEmail("");
           setPassword("");
           verifyEmail();
+          setUserName();
         })
         .catch((error) => {
           setError(error.massage);
@@ -65,6 +67,17 @@ const Login = () => {
     }
     event.preventDefault();
   };
+  const setUserName = () =>{
+    updateProfile(auth.currentUser, {
+        displayName: name
+    })
+    .then(() =>{
+        console.log("Update user name");
+    })
+    .catch(error =>{
+        setError(error.massage);
+    })
+  }
   const verifyEmail = () => {
     sendEmailVerification(auth.currentUser).then(() => {
       console.log("email sent");
