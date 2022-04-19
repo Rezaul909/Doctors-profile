@@ -6,7 +6,7 @@ import app from '../../firebase.init';
 
 const auth = getAuth(app);
 
-const ProtectedRoute = (children) => {
+const ProtectedRoute = ({children}) => {
     const [user] = (auth)
     const location = useLocation();
 

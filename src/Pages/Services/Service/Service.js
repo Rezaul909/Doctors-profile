@@ -9,7 +9,7 @@ const Service = ({ service }) => {
   const navigate = useNavigate();
 
   const handleCheckOut = () => {
-    const path = `/${id}`;
+    const path = `/Login`;
     navigate(path);
   }
   return (
@@ -24,7 +24,9 @@ const Service = ({ service }) => {
           </Card.Text>
         </Card.Body>
         <Card.Footer>
-            <Button onClick={handleCheckOut} variant="outline-primary">More info</Button>
+            <Button onClick={handleCheckOut}  variant="outline-primary">
+              More info
+            </Button>
         </Card.Footer>
       </Card>
 
