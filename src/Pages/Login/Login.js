@@ -51,7 +51,7 @@ const Login = () => {
         .then((result) => {
           const user = result.user;
           if(user.uid){
-            navigate('/Home');
+            navigate('/CheckOut');
           }
           console.log(user);
         })
@@ -65,7 +65,7 @@ const Login = () => {
         .then((result) => {
           const user = result.user;
           if(user.uid){
-            navigate('/Home');
+            navigate('/CheckOut');
           }
           console.log(user);
           setEmail("");
@@ -106,7 +106,7 @@ const Login = () => {
     .then(result =>{
       const user = result.user;
       if(user.uid){
-        navigate('/Home');
+        navigate('/CheckOut');
       }
       console.log(user);
     })

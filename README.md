@@ -1,10 +1,22 @@
-# Getting Started with Create React App
+# MediPoint
+## This is my live site link: [Click here to see live site](https://assignment-10-57605.web.app/).
+## This is my repository link: [Click here to see repo ](https://github.com/programming-hero-web-course-4/independent-service-provider-Rezaul909).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+Four features of my project
+- Anyone can visit this site.
+- In this site, we show our services.
+- Anyone can signUp with google in this site.
+- In Blogs component, we added tow importent question/answer.
+- if user loged in, then he/she get a varification mail.
 
-## Available Scripts
+## used Technology
 
-In the project directory, you can run:
+- Firebase
+- React
+- React bootstrap
+- React router
+- React DOM
 
 ### `npm start`
 

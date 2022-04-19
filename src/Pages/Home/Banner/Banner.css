@@ -1,16 +1,13 @@
 .banner-container{
     display: flex;
 }
-
 .img-container{
     width: 60%;
 }
-
 .img-container img{
     width: 100%;
     border-radius: 50%;
 }
-
 .dr-info{
     border: 1px solid gray;
     border-radius: 20px;
@@ -21,4 +18,19 @@
 .dr-info img {
     width: 100%;
     border-radius: 20px;
+}
+
+@media only screen  and (max-width:688px){
+    .banner-container{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .img-container{
+        margin: 0 auto;
+        width: 90%;
+    }
+    .dr-info{
+        margin-top: 30px;
+    }
+    
 }
