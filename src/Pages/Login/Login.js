@@ -3,16 +3,21 @@ import { Button, Form, Toast, ToastContainer } from "react-bootstrap";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  signInWithPopup,
   updateProfile,
 } from "firebase/auth";
 import app from "../../firebase.init";
+import { useNavigate } from "react-router-dom";
 
 const auth = getAuth(app);
 
 const Login = () => {
+  const provider = new GoogleAuthProvider();
+  const navigate = useNavigate();
   const [validated, setValidated] = useState(false);
   const [registered, setRegistered] = useState(false);
   const [name, setName] = useState('');
@@ -45,16 +50,23 @@ const Login = () => {
       signInWithEmailAndPassword(auth, email, password)
         .then((result) => {
           const user = result.user;
+          if(user.uid){
+            navigate('/Home');
+          }
           console.log(user);
         })
         .catch((error) => {
           setError(error.massage);
           console.log(error);
         });
-    } else {
+    } 
+    else {
       createUserWithEmailAndPassword(auth, email, password)
         .then((result) => {
           const user = result.user;
+          if(user.uid){
+            navigate('/Home');
+          }
           console.log(user);
           setEmail("");
           setPassword("");
@@ -64,7 +76,7 @@ const Login = () => {
         .catch((error) => {
           setError(error.massage);
         });
-    }
+    } 
     event.preventDefault();
   };
   const setUserName = () =>{
@@ -89,6 +101,19 @@ const Login = () => {
           console.log("reset mail sent");
       })
   }
+  const handleGoogleSignIn = () =>{
+    signInWithPopup(auth,provider)
+    .then(result =>{
+      const user = result.user;
+      if(user.uid){
+        navigate('/Home');
+      }
+      console.log(user);
+    })
+    .catch(error =>{
+      setError(error.massage);
+    })
+  }
   return (
     <div>
       <h1 className="text-primary mt-5">
@@ -96,8 +121,8 @@ const Login = () => {
       </h1>
       <div className="mt-5 w-25 mx-auto">
         <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-          {!registered ? 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+          {!registered && 
+            <Form.Group className="mb-3" controlId="formBasicName">
                 <Form.Label>Enter your name</Form.Label>
                 <Form.Control
                 onBlur={handleNameBlur}
@@ -105,7 +130,7 @@ const Login = () => {
                 placeholder="Enter name"
                 required
                 />
-            </Form.Group> : ''
+            </Form.Group> 
           } 
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -144,7 +169,7 @@ const Login = () => {
             />
           </Form.Group>
           <div>
-            {registered ? 
+            {registered && 
                 <ToastContainer>
                 <Toast>
                     <Toast.Header>
@@ -154,13 +179,17 @@ const Login = () => {
                     <small className="text-muted">just now</small>
                     </Toast.Header>
                 </Toast>
-                </ToastContainer> : ''
+                </ToastContainer> 
             }
           </div>
           <p className="text-danger">{error}</p>
+          <Button onClick={handleGoogleSignIn} variant="primary" type="submit">
+            {!registered && "Sign in with Google" }
+          </Button> &nbsp; &nbsp;
           <Button variant="primary" type="submit">
             {registered ? "Login" : "Register"}
           </Button>
+          <br /><br />
         </Form>
       </div>
     </div>

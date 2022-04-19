@@ -2,8 +2,13 @@ import React from "react";
 import "./Header.css";
 import { Container, Nav, Navbar} from "react-bootstrap";
 import logo from "../../../images/logo/logo.png";
+import { getAuth } from "firebase/auth";
+import app from "../../../firebase.init";
+
+// const auth = getAuth(app);
 
 const Header = () => {
+  
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="secondary" variant="dark">
@@ -22,7 +27,7 @@ const Header = () => {
             </Nav>
             <Nav>
               <Nav.Link eventKey={2} href="/login">
-                Login
+                Register
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
